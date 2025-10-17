@@ -18,6 +18,7 @@ import com.dsm.retrofitappmockapi.clases.adapters.RecursosAdapter
 import com.dsm.retrofitappmockapi.clases.body.RecursosResponse
 import com.dsm.retrofitappmockapi.clases.service.RecursosApiService
 import com.dsm.retrofitappmockapi.databinding.FragmentHomeBinding
+import com.google.gson.Gson
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val BASE_URL = "https://68f240b6b36f9750deebfc08.mockapi.io/api/v1/resources/"
+    private val BASE_URL = "https://68f240b6b36f9750deebfc08.mockapi.io/api/v1/"
     private var listaRecursos = ArrayList<Recursos>()
 
     override fun onCreateView(

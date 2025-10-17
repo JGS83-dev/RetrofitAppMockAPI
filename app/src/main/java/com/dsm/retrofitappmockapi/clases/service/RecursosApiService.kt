@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface RecursosApiService {
-    @GET("recursos")
+    @GET("resources")
     fun callResources(): Call<List<RecursosResponse>>
 }
