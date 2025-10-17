@@ -1,3 +1,15 @@
-<resources>
-    <string name="app_name">RetrofitAppMockAPI</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Titulos-->
+    <string name="app_name">Biblioteca recursos en linea</string>
+    <string name="title_home">BIENVENIDO</string>
+    <string name="title_dashboard">Detalle curso</string>
+    <string name="title_notifications">...</string>
+    <string name="titulo_informacion">Detalles</string>
+    <string name="titulo_recursos">Recursos disponibles</string>
+    <!--Labels-->
+    <string name="lbl_id">ID Recurso</string>
+    <string name="lbl_nombre">Nombre recurso</string>
+    <string name="lbl_descripcion">Descripción</string>
+    <string name="lbl_enlace">Enlace</string>
+    <string name="lbl_tipo">Tipo de recurso</string>
 </resources>
