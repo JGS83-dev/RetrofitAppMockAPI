@@ -16,6 +16,7 @@ import com.dsm.retrofitappmockapi.R
 import com.dsm.retrofitappmockapi.clases.Recursos
 import com.dsm.retrofitappmockapi.clases.adapters.RecursosAdapter
 import com.dsm.retrofitappmockapi.clases.body.RecursosResponse
+import com.dsm.retrofitappmockapi.clases.ejemplo
 import com.dsm.retrofitappmockapi.clases.service.RecursosApiService
 import com.dsm.retrofitappmockapi.databinding.FragmentHomeBinding
 import com.google.gson.Gson
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val BASE_URL = "https://68f240b6b36f9750deebfc08.mockapi.io/api/v1/"
+    private val BASE_URL = "https://68f240b6b36f9750deebfc08.mockapi.io/"
     private var listaRecursos = ArrayList<Recursos>()
 
     override fun onCreateView(
@@ -54,8 +55,22 @@ class HomeFragment : Fragment() {
 
         var retrofitAPI: RecursosApiService = retrofit.create(RecursosApiService::class.java)
 
+        retrofitAPI.callEjemplos().enqueue(object : Callback<List<ejemplo>> {
+            override fun onResponse(p0: Call<List<ejemplo>>, response: Response<List<ejemplo>>) {
+                Log.d("DEPURACION DATA EJEMPLO",response.toString())
+                response.body()!!.forEach{
+                    Log.i("DATA ENDPOINT EJEMPLO",it.toString())
+                }
+            }
+
+            override fun onFailure(p0: Call<List<ejemplo>>, p1: Throwable) {
+                Log.i("callEjemplos","Error al obtener recursos en linea de API Service: ${p1.message}")
+            }
+        })
+
         retrofitAPI.callResources().enqueue(object : Callback<List<RecursosResponse>> {
             override fun onResponse(p0: Call<List<RecursosResponse>>, response: Response<List<RecursosResponse>>) {
+                Log.d("DEPURACION DATA RESOURCES",response.toString())
                 response.body()!!.forEach{
                     var recurso = Recursos(it.titulo,it.descripcion,it.tipo,it.enlace,it.imagen,it.id)
                     listaRecursos.add(recurso)
